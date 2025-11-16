@@ -13,6 +13,9 @@
 // Output: 0 1 1 2 3 5 8
 // Explanation: 0 1 1 2 3 5 8 is the fibonacci series upto 6th term.(o based indexing)
 
+const mult = 8 * 5;
+console.log(mult);
+
 const N = 5
 let ctr = 0
 let a = 0
@@ -21,7 +24,7 @@ let sequence = `${a}${b}`
 
 const fibonacciNumber = (N, ctr, a, b) => {
   //make fibonacci number 
-  if (ctr >= N) {
+  if (ctr >= N - 1) {
     return sequence
   }
 
