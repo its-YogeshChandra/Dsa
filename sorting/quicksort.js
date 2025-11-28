@@ -1,34 +1,43 @@
 const arr = [5, 42, 93, 22, 67, 14, 88, 3, 55, 71]
-
+let pivVal = 0
 const quickSort = () => {
   // pick up the pivot and high 
-  let pivot = arr[0]
-  let high = arr.length - 1;
-
-  sort(pivot, high);
-  return arr
+  if (pivVal > arr.length - 1) { return arr }
+  let pivot = arr[pivVal]
+  pivVal++
+  sort(pivot);
+  return quickSort()
 }
 
 const sort = (pivot) => {
   //create sorting algorithm
-  let elLow = 0
-  let elhigh = arr.length - 1
+  let i = -1
+  let j = arr.length
 
-  while (elLow <= elhigh) {
+  while (true) {
 
-    //swaqp the element 
-    if (arr[elLow] >= pivot) {
-      [arr[elLow], arr[elhigh]] = [arr[elhigh], arr[elLow]]
+    do {
+      i++
+    } while (
+      arr[i] < pivot
+    );
+
+    do {
+      j--
+    } while (
+      arr[j] > pivot
+    );
+
+    //breaking condition 
+    if (i >= j) {
+      return
     }
 
-    // swap the element
-    if (arr[elhigh] <= pivot) {
-      [arr[elLow], arr[elhigh]] = [arr[elhigh], arr[elLow]]
-    }
-
-    elLow++
-    elhigh--
+    //swap if upper two do while condition don't work 
+    [arr[i], arr[j]] =
+      [arr[j], arr[i]]
   }
+
 }
 
 
