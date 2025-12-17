@@ -20,14 +20,15 @@
 //
 // The only value in nums is 10, so there is no second largest value, thus - 1 is returned
 
-const nums = [8, 8, 7, 6, 5]
+const nums = [8, 8, 7, 6, 5, 9, 9]
 
 const findSecondLargest = (nums) => {
 
   // use the quick sort algo
   let pivVal = 0
 
-  const quickSort = () => {
+  const quickSort = (nums) => {
+    console.log("nums:" + nums)
     //base case 
     if (pivVal > nums.length - 1) {
       return nums
@@ -37,11 +38,11 @@ const findSecondLargest = (nums) => {
 
     //sorting algo
     sort(pivot);
-    quickSort()
+    return quickSort(nums)
 
   }
 
-  const newArr = quickSort();
+  const newArr = quickSort(nums);
   console.log(newArr)
   let f = newArr.length - 2
   while (true) {
@@ -73,7 +74,7 @@ const sort = (pivot) => {
     } while (nums[j] > pivot);
 
     //maker of the while
-    [nums[j], nums[i]] = [nums[i], nums[i]]
+    [nums[j], nums[i]] = [nums[i], nums[j]]
 
     //if i and j clash 
     if (i >= j) {
